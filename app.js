@@ -15,9 +15,7 @@ app.use('/api/v1/tasks', tasksRouter);
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-	//res.send('Task manager app');
-	res.send(process.env.MONGO_URL);
-	
+	res.send('Task manager app');
 })
 
 app.delete('/api/v1/tasks/:id', (req, res) => {
