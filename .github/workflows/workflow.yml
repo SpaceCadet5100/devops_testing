@@ -7,6 +7,31 @@ on:
 name: deploy_on_merge_push
 
 jobs:
+  destroy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@master    
+
+    - name: Login
+      uses: okteto/login@latest
+      with:
+        token: ${{ secrets.OKTETO_TOKEN }}
+
+    - name: "Activate Namespace"
+      uses: okteto/namespace@latest
+      with:
+        namespace: spacecadet5100
+    
+    - name: "Trigger the pipeline"
+      uses: okteto/pipeline@latest
+      with:
+        name: pr-${{ github.event.number }}
+    
+    - name: "Destroy the pipeline"
+      uses: okteto/destroy-pipeline@latest
+      with:
+        name: pr-${{ github.event.number }}
   devflow:
     runs-on: ubuntu-latest
     steps:
