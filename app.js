@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
 app.delete('/api/v1/tasks/:id', (req, res) => {
 	res.send('Task manager app');
 })
-
 const start = async() => {
 	try {
 		await connectDB(process.env.MONGO_URL)
