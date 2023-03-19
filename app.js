@@ -15,7 +15,9 @@ app.use('/api/v1/tasks', tasksRouter);
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-	res.send('Task manager app');
+	//res.send('Task manager app');
+	res.send(process.env.MONGO_URL);
+	
 })
 
 app.delete('/api/v1/tasks/:id', (req, res) => {
@@ -24,7 +26,7 @@ app.delete('/api/v1/tasks/:id', (req, res) => {
 
 const start = async() => {
 	try {
-		await connectDB(process.env.MONGO_URI)
+		await connectDB(process.env.MONGO_URL)
 		app.listen(port, console.log('server is listening'));
 	}
 	catch{
