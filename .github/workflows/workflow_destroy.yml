@@ -4,7 +4,7 @@ on:
     types:
       - closed
 
-name: example
+name: destroy
 
 jobs:
   devflow:
