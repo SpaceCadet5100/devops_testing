@@ -1,10 +1,10 @@
-# File: .github/workflows/workflow.yml
-on:
-  push:
-    branches:
-      - master
 
-name: example
+on:
+  pull_request:
+    branches: 
+      - main
+    types: [closed]
+name: deploy_on_merge_push
 
 jobs:
   devflow:
